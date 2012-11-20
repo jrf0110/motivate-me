@@ -1,0 +1,77 @@
+<head>
+  <title>motivate-me-2</title>
+
+  <link rel="stylesheet" href="ratchet.css">
+
+  <script type="text/javascript" src="ratchet.js"></script>
+</head>
+
+<body>
+  {{> header}}
+
+  <div id="page" class="content page"></div>
+</body>
+
+<template name="header">
+  <header class="bar-title">
+    <button class="button back">Back</button>
+    <h1 class="title">Motivate Me!</h1>
+    {{#if loggedIn}}
+      <button class="button login-out">Logout</button>
+    {{/if}}
+  </header>
+</template>
+
+<template name="leaderboard">
+  <ul class="leaderboard list">
+    {{#each players}}
+      {{> player}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="login">
+  <h1>Login</h1>
+  <form id="login-form">
+    <div class="input-group">
+      <div class="input-row">
+        <label>Name</label>
+        <input name="name" class="name-field" type="text">
+      </div>
+      <div class="input-row">
+        <label>Password</label>
+        <input name="password" class="password-field" type="password">
+      </div>
+    </div>
+    <a class="login-btn button-block">Login</a>
+  </form>
+  <ul class="list">
+    <li>
+      <a class="register">Register</a>
+      <span class="chevron"></span>
+    </li>
+  </ul>
+</template>
+
+<template name="register">
+  <h1>Register</h1>
+  <form id="create-account-form">
+    <div class="input-group">
+      <div class="input-row">
+        <label>Name</label>
+        <input name="name" class="name-field" type="text" placholder="Awesome Person">
+      </div>
+      <div class="input-row">
+        <label>Password</label>
+        <input name="password" class="password-field" type="password">
+      </div>
+    </div>
+    <a class="button-block">Sign Up!</a>
+  </form>
+</template>
+
+<template name="player">
+  <li>
+    {{name}} <button class="add-point button-positive">{{score}} + 1</button>
+  </li>
+</template>
